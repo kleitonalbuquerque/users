@@ -5,22 +5,52 @@
     <div class="columns is-mobile">
       <div class="column is-half is-offset-one-quarter">
         <label class="label">Nome:</label>
-        <input type="text" placeholder="Nome do usuário" class="input" />
+        <input
+          type="text"
+          placeholder="Nome do usuário"
+          class="input"
+          v-model="name"
+        />
         <label class="label">E-mail:</label>
-        <input type="email" placeholder="E-mail" class="input" />
+        <input
+          type="email"
+          placeholder="E-mail"
+          class="input"
+          v-model="email"
+        />
         <label class="label">Senha:</label>
-        <input type="password" placeholder="******" class="input" />
+        <input
+          type="password"
+          placeholder="******"
+          class="input"
+          v-model="password"
+        />
         <!-- TO DO -->
         <!-- Select com as opções de tipo de usuário: Comum(0) e Admin(1)  -->
         <hr />
-        <button class="button is-success">Cadastrar</button>
+        <button class="button is-success" @click="register">Cadastrar</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      name: "",
+      password: "",
+      email: "",
+    };
+  },
+  methods: {
+    register() {
+      console.log(this.name);
+      console.log(this.email);
+      console.log(this.password);
+    },
+  },
+};
 </script>
 
 <style></style>
