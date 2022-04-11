@@ -40,19 +40,24 @@ export default {
   data() {
     return {
       name: "",
-      password: "",
       email: "",
+      password: "",
     };
   },
   methods: {
     register() {
       axios
-        .get("http://localhost:8686/")
+        .post("http://localhost:8686/user", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
         .then((data) => {
           console.log(data);
         })
         .catch((err) => {
-          console.log(err);
+          let msgErro = err.response.data.err;
+          console.log(msgErro);
         });
       // console.log(this.name);
       // console.log(this.email);
