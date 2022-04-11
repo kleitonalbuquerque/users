@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -45,9 +46,17 @@ export default {
   },
   methods: {
     register() {
-      console.log(this.name);
-      console.log(this.email);
-      console.log(this.password);
+      axios
+        .get("http://localhost:8686/")
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // console.log(this.name);
+      // console.log(this.email);
+      // console.log(this.password);
     },
   },
 };
