@@ -4,6 +4,11 @@
     <hr />
     <div class="columns is-mobile">
       <div class="column is-half is-offset-one-quarter">
+        <div v-if="error != undefined">
+          <div class="notification is-danger">
+            {{ error }}
+          </div>
+        </div>
         <label class="label">Nome:</label>
         <input
           type="text"
@@ -42,6 +47,7 @@ export default {
       name: "",
       email: "",
       password: "",
+      error: undefined,
     };
   },
   methods: {
@@ -54,10 +60,11 @@ export default {
         })
         .then((data) => {
           console.log(data);
+          this.$router.push({ name: "Home" });
         })
         .catch((err) => {
           let msgErro = err.response.data.err;
-          console.log(msgErro);
+          this.error = msgErro;
         });
       // console.log(this.name);
       // console.log(this.email);
